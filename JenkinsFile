@@ -1,1 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Building the project...'
+                    sh 'g++ -o output main.cpp' // Replace 'main.cpp' with your actual filename
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Running tests...'
+                    sh './output' // Run the compiled program (ensure it doesn't require input)
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    echo 'Deploying application...'
+                    // Simulate deployment
+                    sh 'echo "Deployment successful"'
+                }
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed'
+        }
+        always {
+            echo 'Pipeline execution completed'
+        }
+    }
+}
 
