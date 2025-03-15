@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building the project...'
-                    sh 'g++ -o output main.cpp' // Replace 'main.cpp' with your actual filename
+                    sh 'g++ -o output ./main/hello.cpp' // Replace 'main.cpp' with your actual filename
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    sh './output' // Run the compiled program (ensure it doesn't require input)
+                    sh './output'
                 }
             }
         }
@@ -24,7 +24,6 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying application...'
-                    // Simulate deployment
                     sh 'echo "Deployment successful"'
                 }
             }
